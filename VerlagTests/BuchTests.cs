@@ -74,7 +74,7 @@ namespace VerlagTests
 		{
 			//Arrange
 			int auflage = 0;
-
+			
 			//Act
 			Buch b = new Buch("autor", "titel", auflage);
 		}
