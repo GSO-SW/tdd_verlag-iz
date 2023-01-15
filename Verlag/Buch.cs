@@ -27,7 +27,12 @@ namespace Verlag
 
         public Buch(string autor, string titel,int auflage) : this(autor,titel)
         {
-            this.auflage = auflage;
+            if (auflage > 0)
+            {
+                this.auflage = auflage;
+            }
+            else throw new ArgumentOutOfRangeException();
+            
         }
 
 
@@ -52,7 +57,16 @@ namespace Verlag
         public int Auflage
         {
             get { return auflage; }
-            set { auflage = value; }
+            set 
+            {
+                if (value > 0)
+                {
+                    
+                    auflage = value;
+                }
+                else throw new ArgumentOutOfRangeException();
+
+            }
         }
     }
 }
