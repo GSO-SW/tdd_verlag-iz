@@ -14,7 +14,13 @@ namespace Verlag
 
         public Buch(string autor, string titel) 
         {
-            this.autor = autor;
+            if (autor != null && autor != "" && autor != "#" && autor != ";" && autor != "§" && autor != "%")
+            {
+                this.autor = autor;
+            }
+            else
+                throw new ArgumentException();
+
             this.titel = titel;
             this.auflage = 1;
         }
@@ -29,7 +35,13 @@ namespace Verlag
         public string Autor
         {
             get { return autor; }
-            set { autor = value; }
+
+            set 
+            {
+                
+                    autor = value;
+               
+            }
         }
 
         public string Titel
