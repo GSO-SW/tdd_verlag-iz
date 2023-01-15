@@ -25,6 +25,21 @@ namespace VerlagTests
 		}
 
 		[TestMethod]
+		public void ISBN_DarfGesetztWerden()
+		{
+			//Arrange
+			string ISBN = "9783770436163";
+
+			//ACT
+			Buch b = new Buch("autor", "titel");
+			b.ISBN = ISBN;
+
+			//Assert
+			Assert.AreEqual(b.ISBN, ISBN);
+
+		}
+
+		[TestMethod]
 		public void Buch_KeineAuflageEntsprichtErsterAuflage()
 		{
 			//Arrange
