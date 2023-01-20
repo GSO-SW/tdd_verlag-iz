@@ -93,11 +93,11 @@ namespace VerlagTests
 
 		// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
 		[TestMethod]
-		//[DataRow("")]
-		[DataRow("A#")]
-		[DataRow("A;A")]
-		[DataRow("§A")]
-		[DataRow("AA%AA")]
+		[DataRow("")]
+		[DataRow("#arack Obama")]
+		[DataRow("Barack;Obama")]
+		[DataRow("Barack Oba§a")]
+		[DataRow("Barack Obam%")]
 		[ExpectedException(typeof(ArgumentException))]
 		public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
 		{
