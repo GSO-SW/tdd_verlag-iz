@@ -105,7 +105,6 @@ namespace VerlagTests
 		{
 			//Arange
 			Random zufall = new Random();
-			
 			string autor = "Barack Obama";
 			int zahl = zufall.Next(autor.Length);
 			autor.Insert(zahl, unerlaubtesZeichen);
@@ -115,12 +114,11 @@ namespace VerlagTests
 		}
 
 		[TestMethod]
-		[DataRow(null)]
-		[ExpectedExeption(typeof(ArgumentNullException))]
-		public void Autor_DarfNichtNullSein()
+		[ExpectedException(typeof(ArgumentNullException))]
+		public void Autor_DarfNichtNullSein(string nul)
 		{
-			
-		}
+            Buch b = new Buch("autor", "titel");
+        }
 
 		[TestMethod]
         public void ISBN_DarfGesetztWerden()
