@@ -94,25 +94,29 @@ namespace VerlagTests
 		// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
 		[TestMethod]
 		[DataRow("")]
-		[DataRow("#arack Obama")]
-		[DataRow("Barack;Obama")]
-		[DataRow("Barack Oba§a")]
-		[DataRow("Barack Obam%")]
+		[DataRow("#")]
+		[DataRow(";")]
+		[DataRow("§")]
+		[DataRow("%")]	
 		[ExpectedException(typeof(ArgumentException))]
 		public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
 		{
-			//Act
-			Buch b = new Buch(unerlaubtesZeichen, "titel");
+            //Arange
+            string autor = "Barack Obama";
+            Random zufallszahl = new Random();
+            int zahl = zufallszahl.Next(autor.Length);
+            autor.Insert(zahl, autor);
+            //Act
+            Buch b = new Buch(unerlaubtesZeichen, "titel");
+			//Assert
 		}
 
 		[DataRow(null)]
 		[ExpectedException(typeof(ArgumentNullException))]
 		public void Autor_NichtLeereEingabeErlaubt(string keinZeichen)
-		{
-			//Act
-			Buch b = new Buch(keinZeichen, "titel");
-
-			//Arange
+        {   //Arange
+            //Act
+            Buch b = new Buch(keinZeichen, "titel");
 			//Assert
 		}
 
