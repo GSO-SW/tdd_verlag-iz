@@ -24,20 +24,7 @@ namespace VerlagTests
 			Assert.AreEqual(auflage, b.Auflage);
 		}
 
-		[TestMethod]
-		public void ISBN_DarfGesetztWerden()
-		{
-			//Arrange
-			string ISBN = "9783770436163";
 
-			//ACT
-			Buch b = new Buch("autor", "titel");
-			b.ISBN = ISBN;
-
-			//Assert
-			Assert.AreEqual(b.ISBN, ISBN);
-
-		}
 
 		[TestMethod]
 		public void Buch_KeineAuflageEntsprichtErsterAuflage()
@@ -109,16 +96,38 @@ namespace VerlagTests
 		// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
 		[TestMethod]
 		[DataRow("")]
-		[DataRow("#")]
-		[DataRow(";")]
-		[DataRow("§")]
-		[DataRow("%")]
-		[DataRow(null)]
+		[DataRow("#zardasht")]
+		[DataRow("zar;dasht")]
+		[DataRow("ism§ail")]
+		[DataRow("jal%al")]
 		[ExpectedException(typeof(ArgumentException))]
 		public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
 		{
 			//Act
 			Buch b = new Buch(unerlaubtesZeichen, "titel");
 		}
-	}
+
+		[TestMethod]
+		[DataRow(null)]
+		[ExpectedExeption(typeof(ArgumentNullException))]
+		public void Autor_DarfNichtNullSein()
+		{
+
+		}
+
+		[TestMethod]
+        public void ISBN_DarfGesetztWerden()
+        {
+            //Arrange
+            string ISBN = "9783770436163";
+
+            //ACT
+            Buch b = new Buch("autor", "titel");
+            b.ISBN = ISBN;
+
+            //Assert
+            Assert.AreEqual(b.ISBN, ISBN);
+
+        }
+    }
 }

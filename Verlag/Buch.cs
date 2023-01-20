@@ -15,15 +15,15 @@ namespace Verlag
 
         public Buch(string autor, string titel) 
         {
-            if (autor != null && autor != "" && autor != "#" && autor != ";" && autor != "§" && autor != "%")
+            if (autor.Contains("") || autor.Contains("#") || autor.Contains(";") || autor.Contains("§") || autor.Contains("%"))
             {
-                this.autor = autor;
+                throw new ArgumentException();
             }
             else
-                throw new ArgumentException();
+                this.autor = autor;
+                this.titel = titel;
+                this.auflage = 1;
 
-            this.titel = titel;
-            this.auflage = 1;
         }
 
         public Buch(string autor, string titel,int auflage) : this(autor,titel)
