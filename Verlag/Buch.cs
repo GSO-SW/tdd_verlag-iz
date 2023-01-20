@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace Verlag
 {
@@ -14,11 +15,18 @@ namespace Verlag
 
         public Buch(string autor, string titel)
         {
-            this.autor = autor;
+            if (autor == "" || autor == "#" || autor == ";" || autor == "§" || autor == "%" || autor == null)
+            {
+                throw new ArgumentException("Name des Authors ist unzulässig");
+            }
+            else
+            {
+                this.autor = autor;
+            }
             this.titel = titel;
             this.auflage = 1;
         }
-
+            
         public Buch(string autor, string titel, int auflage) :this(autor, titel)
         {
             this.auflage = auflage;
