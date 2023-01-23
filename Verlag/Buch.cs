@@ -15,25 +15,14 @@ namespace Verlag
 
         public Buch(string autor, string titel) 
         {
-            if (autor.Contains("") || autor.Contains("#") || autor.Contains(";") || autor.Contains("§") || autor.Contains("%"))
-            {
-                throw new ArgumentException();
-            }
-            else
-                this.autor = autor;
-                this.titel = titel;
-                this.auflage = 1;
-
+            Autor = autor;
+            this.titel = titel;
+            this.auflage = 1;
         }
 
         public Buch(string autor, string titel,int auflage) : this(autor,titel)
         {
-            if (auflage > 0)
-            {
-                this.auflage = auflage;
-            }
-            else throw new ArgumentOutOfRangeException();
-            
+            this.Auflage = auflage;
         }
 
         public string ISBN
@@ -51,9 +40,20 @@ namespace Verlag
 
             set 
             {
-                
-                    autor = value;
-               
+                List<char> unerlaubtezeichen = new List<char>();
+                unerlaubtezeichen.Add('#');
+                unerlaubtezeichen.Add(';');
+                unerlaubtezeichen.Add('§');
+                unerlaubtezeichen.Add('%');
+
+                foreach(char c in unerlaubtezeichen)
+                {
+                    if (value.Contains(c))
+                    {
+                        throw new ArgumentException();
+                    }
+                }
+                autor = value;
             }
         }
 
