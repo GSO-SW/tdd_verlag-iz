@@ -15,7 +15,7 @@ namespace Verlag
 
         public Buch(string autor, string titel)
         {
-            if (autor == "" || autor == "#" || autor == ";" || autor == "§" || autor == "%" || autor == null)
+            if (autor.Contains("") || autor.Contains("#") || autor.Contains(";") || autor.Contains("§") || autor.Contains("%"))
             {
                 throw new ArgumentException("Name des Authors ist unzulässig");
             }

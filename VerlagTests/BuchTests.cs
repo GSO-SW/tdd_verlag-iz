@@ -105,21 +105,19 @@ namespace VerlagTests
             string autor = "Barack Obama";
             Random zufallszahl = new Random();
             int zahl = zufallszahl.Next(autor.Length);
-            autor.Insert(zahl, autor);
+            autor.Insert(zahl, unerlaubtesZeichen);
             //Act
-            Buch b = new Buch(unerlaubtesZeichen, "titel");
+            Buch b = new Buch(autor, "titel");
 			//Assert
 		}
 
-		[DataRow(null)]
+		[TestMethod]
 		[ExpectedException(typeof(ArgumentNullException))]
-		public void Autor_NichtLeereEingabeErlaubt(string keinZeichen)
+		public void Autor_NichtLeereEingabeErlaubt()
         {   //Arange
             //Act
-            Buch b = new Buch(keinZeichen, "titel");
+            Buch b = new Buch(null, "titel");
 			//Assert
 		}
-
-
 	}
 }
