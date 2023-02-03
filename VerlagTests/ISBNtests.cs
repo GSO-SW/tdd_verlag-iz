@@ -22,7 +22,7 @@ namespace VerlagTests
             Assert.AreEqual(b.ISBN, ISBN);
 
         }
-    
+
 
     }
 }
