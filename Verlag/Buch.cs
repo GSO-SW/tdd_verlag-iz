@@ -52,6 +52,10 @@ namespace Verlag
                     {
                         throw new ArgumentException();
                     }
+                    else if(value == null)
+                    {
+                        throw new ArgumentNullException();
+                    }
                 }
                 autor = value;
             }
