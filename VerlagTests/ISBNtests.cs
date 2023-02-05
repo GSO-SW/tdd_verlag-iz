@@ -15,14 +15,27 @@ namespace VerlagTests
             string ISBN = "9783770436163";
 
             //ACT
-            Buch b = new Buch("autor", "titel");
-            b.ISBN = ISBN;
+            ISBN i = new ISBN(ISBN);
+            i.ISbn = ISBN;
 
             //Assert
-            Assert.AreEqual(b.ISBN, ISBN);
+            Assert.AreEqual(i.ISbn, ISBN);
 
         }
 
+        [TestMethod]
+        public void ISBNPruffZifferEingabe_AutomatischeErgaenzungVonPruffziffer()
+        {
+            //Arrang 
+            string isbnohnepruffziffer = "978377043616";
+            string isbnmitpruffziffer = "9783770436163";
 
+            ISBN b = new ISBN(isbnmitpruffziffer);
+
+            //Act
+            string ergaenzteISBN = b.ISBNPruffZifferEingabe(isbnohnepruffziffer);
+            //Assert
+            Assert.AreEqual(ergaenzteISBN, isbnmitpruffziffer);
+        }
     }
 }
