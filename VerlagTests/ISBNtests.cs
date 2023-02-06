@@ -37,5 +37,18 @@ namespace VerlagTests
             //Assert
             Assert.AreEqual(ergaenzteISBN, isbnmitpruffziffer);
         }
+
+        //Anleitung
+        //https://www.quora.com/How-do-you-convert-a-13-digit-ISBN-to-a-10-digit-ISBN
+        [TestMethod]
+        public void ISBN13_konvertierenZuISBN10()
+        {
+            //Act
+            ISBN i = new ISBN("9783770436163");
+
+            //Assert
+            Assert.AreEqual("3770436164", i.ISBN10("9783770436163"));
+        }
     }
 }
+    

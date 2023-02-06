@@ -41,5 +41,31 @@ namespace Verlag
             isbnmitpruffziffer = isbnOhnePruffziffer.Insert(isbnOhnePruffziffer.Length, Convert.ToString(ergebniss));
             return isbnmitpruffziffer;
         }
+
+        public string ISBN10(string isbn)
+        {
+            string ISBN = "9783770436163";
+            ISBN = ISBN.Remove(0, 3);
+            ISBN = ISBN.Remove(ISBN.Length - 1, 1);
+
+            int einzelneZahl;
+            int zwischenspeicher;
+            string neueISBN = "";
+            int multiplikationsFaktor = 10;
+
+            for (int i = 0; i > ISBN.Length; i++)
+            {
+                einzelneZahl = ISBN[i];
+
+                zwischenspeicher = einzelneZahl * multiplikationsFaktor;
+
+                neueISBN = neueISBN + zwischenspeicher;
+
+                multiplikationsFaktor--;
+            }
+
+            return neueISBN;
+        }
+
     }
 }
